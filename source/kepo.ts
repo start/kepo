@@ -37,5 +37,5 @@ window.addEventListener('blur', () => {
 })
 
 function last<T>(items: ReadonlyArray<T>): T | undefined {
-    return items[items.length - 1];
+    return items[items.length - 1]
 }
