@@ -32,6 +32,10 @@ document.addEventListener('keyup', event => {
     }
 })
 
+window.addEventListener('blur', () => {
+    pressedKeyCodes.splice(0)
+})
+
 function last<T>(items: ReadonlyArray<T>): T | undefined {
     return items[items.length - 1];
 }
