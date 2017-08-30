@@ -1,14 +1,14 @@
-import { pressedKeyCodesFromOldestToNewest, isKeyPressed, mostRecentlyPressedKey } from './kepo'
+import { pressedKeyCodesFromOldestToNewest, isKeyPressed, mostRecentlyPressedKey, areAllKeysPressed} from './kepo'
 
+function getElementById(id: string): HTMLElement {
+    return document.getElementById(id)!
+}
 document.addEventListener('DOMContentLoaded', () => {
-    const pressedKeysContainer = document.getElementById('pressed-keys')!
-    const isSpacebarPressedContainer = document.getElementById('is-spacebar-pressed')!
-    const arrowRecencyContainer = document.getElementById('arrow-recency')!
-
     function frame() {
-        pressedKeysContainer.innerHTML = pressedKeyCodesFromOldestToNewest.join(', ')
-        isSpacebarPressedContainer.innerHTML = isKeyPressed(32).toString()
-        arrowRecencyContainer.innerHTML = (mostRecentlyPressedKey(37, 38, 39, 40) || 'None').toString()
+        getElementById('pressedKeyCodesFromOldestToNewest').innerHTML = pressedKeyCodesFromOldestToNewest.join(', ')
+        getElementById('isKeyPressed').innerHTML = isKeyPressed(32).toString()
+        getElementById('mostRecentlyPressedKey').innerHTML = (mostRecentlyPressedKey(37, 38, 39, 40) || 'None').toString()
+        getElementById('areAllKeysPressed').innerHTML = areAllKeysPressed(17, 13).toString()
 
         window.requestAnimationFrame(frame)
     }

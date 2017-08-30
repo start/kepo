@@ -8,7 +8,7 @@ export function isKeyPressed(keyCode: number): boolean {
     return pressedKeyCodes.includes(keyCode)
 }
 
-export function areKeysPressed(...keyCodes: number[]): boolean {
+export function areAllKeysPressed(...keyCodes: number[]): boolean {
     return keyCodes.every(k => isKeyPressed(k))
 }
 
