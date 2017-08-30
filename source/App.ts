@@ -1,21 +1,21 @@
-import { pressedKeyCodesFromOldestToNewest, isKeyPressed, mostRecentlyPressedKey, areAllKeysPressed } from './kepo'
+import { keysDownFromOldestToNewest, isKeyDown, newestKeyDown, areAllKeysDown } from './kepo'
 
 function getElementById(id: string): HTMLElement {
     return document.getElementById(id)!
 }
 document.addEventListener('DOMContentLoaded', () => {
     function frame() {
-        getElementById('pressedKeyCodesFromOldestToNewest').innerHTML =
-            pressedKeyCodesFromOldestToNewest.join(', ')
+        getElementById('keysDownFromOldestToNewest').innerHTML =
+            keysDownFromOldestToNewest.join(', ')
 
-        getElementById('isKeyPressed').innerHTML =
-            isKeyPressed(32).toString()
+        getElementById('isKeyDown').innerHTML =
+            isKeyDown(32).toString()
 
-        getElementById('mostRecentlyPressedKey').innerHTML =
-            (mostRecentlyPressedKey(37, 38, 39, 40) || 'None').toString()
+        getElementById('newestKeyDown').innerHTML =
+            (newestKeyDown(37, 38, 39, 40) || 'None').toString()
 
-        getElementById('areAllKeysPressed').innerHTML =
-            areAllKeysPressed(17, 13).toString()
+        getElementById('areAllKeysDown').innerHTML =
+            areAllKeysDown(17, 13).toString()
 
         window.requestAnimationFrame(frame)
     }

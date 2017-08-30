@@ -1,23 +1,22 @@
 // The currently-pressed key codes from oldest to newest
-const pressedKeyCodes: number[] = []
+const _downKeys: number[] = []
 
-export const pressedKeyCodesFromOldestToNewest =
-    pressedKeyCodes as ReadonlyArray<number>
+export const keysDownFromOldestToNewest =
+    _downKeys as ReadonlyArray<number>
 
-export function isKeyPressed(keyCode: number): boolean {
-    return pressedKeyCodes.includes(keyCode)
+export function isKeyDown(key: number): boolean {
+    return _downKeys.includes(key)
 }
 
-export function areAllKeysPressed(...keyCodes: number[]): boolean {
-    return keyCodes.every(k => isKeyPressed(k))
+export function areAllKeysDown(...key: number[]): boolean {
+    return key.every(k => isKeyDown(k))
 }
 
-export function mostRecentlyPressedKey(...keyCodes: number[]): number | undefined {
+export function newestKeyDown(...keys: number[]): number | undefined {
     return last(
-        keyCodes.length
-            ? pressedKeyCodes.filter(p => keyCodes.includes(p))
-            : pressedKeyCodes
-    )
+        keys.length
+            ? _downKeys.filter(p => keys.includes(p))
+            : _downKeys)
 }
 
 document.addEventListener('keydown', event => {
@@ -25,8 +24,8 @@ document.addEventListener('keydown', event => {
         return
     }
 
-    if (!isKeyPressed(event.keyCode)) {
-        pressedKeyCodes.push(event.keyCode)
+    if (!isKeyDown(event.keyCode)) {
+        _downKeys.push(event.keyCode)
     }
 })
 
@@ -36,14 +35,18 @@ document.addEventListener('keyup', event => {
         return
     }
 
-    if (isKeyPressed(event.keyCode)) {
-        pressedKeyCodes.splice(pressedKeyCodes.indexOf(event.keyCode), 1)
+    if (isKeyDown(event.keyCode)) {
+        _downKeys.splice(_downKeys.indexOf(event.keyCode), 1)
     }
 })
 
 window.addEventListener('blur', () => {
     releaseAllKeys()
 })
+
+function releaseAllKeys(): void {
+    _downKeys.splice(0)
+}
 
 function last<T>(items: ReadonlyArray<T>): T | undefined {
     return items[items.length - 1]
@@ -62,12 +65,7 @@ function last<T>(items: ReadonlyArray<T>): T | undefined {
 function surrenderedDueToMetaKey(event: KeyboardEvent): boolean {
     if (event.metaKey) {
         releaseAllKeys()
-        return true
     }
 
-    return false
-}
-
-function releaseAllKeys(): void {
-    pressedKeyCodes.splice(0)
+    return event.metaKey
 }
