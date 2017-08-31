@@ -5,7 +5,7 @@ export const keysDownFromOldestToNewest =
     _downKeys as ReadonlyArray<number>
 
 export function isKeyDown(key: number): boolean {
-    return _downKeys.includes(key)
+    return includes(_downKeys, key)
 }
 
 export function areAllKeysDown(...key: number[]): boolean {
@@ -15,8 +15,16 @@ export function areAllKeysDown(...key: number[]): boolean {
 export function newestKeyDown(...keys: number[]): number | undefined {
     return last(
         keys.length
-            ? _downKeys.filter(p => keys.includes(p))
+            ? _downKeys.filter(p => includes(keys, p))
             : _downKeys)
+}
+
+function last<T>(items: ReadonlyArray<T>): T | undefined {
+    return items[items.length - 1]
+}
+
+function includes<T>(haystack: ReadonlyArray<T>, needle: T): boolean {
+    return haystack.indexOf(needle) >= 0
 }
 
 document.addEventListener('keydown', event => {
@@ -46,10 +54,6 @@ window.addEventListener('blur', () => {
 
 function releaseAllKeys(): void {
     _downKeys.splice(0)
-}
-
-function last<T>(items: ReadonlyArray<T>): T | undefined {
-    return items[items.length - 1]
 }
 
 // We aren't fancy enough to support meta keys (e.g. the

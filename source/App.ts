@@ -1,4 +1,4 @@
-import { keysDownFromOldestToNewest, isKeyDown, newestKeyDown, areAllKeysDown } from './kepo'
+import { keysDownFromOldestToNewest, isKeyDown, newestKeyDown, areAllKeysDown } from './Kepo'
 
 function getElementById(id: string): HTMLElement {
     return document.getElementById(id)!
