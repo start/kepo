@@ -1,0 +1,25 @@
+{
+  "name": "kepo",
+  "version": "0.0.0",
+  "description": "Kepo lets you poll keyboard input",
+  "main": "built_for_publishing/Kepo.js",
+  "devDependencies": {
+    "awesome-typescript-loader": "latest",
+    "source-map-loader": "latest",
+    "typescript": "latest",
+    "webpack": "latest"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/start/kepo.git"
+  },
+  "author": "Daniel Miller <daniel@wants.email>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/start/kepo/issues"
+  },
+  "homepage": "https://github.com/start/kepo#readme"
+}
