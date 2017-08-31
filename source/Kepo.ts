@@ -8,8 +8,8 @@ export function isKeyDown(key: number): boolean {
     return includes(_downKeys, key)
 }
 
-export function areAllKeysDown(...key: number[]): boolean {
-    return key.every(k => isKeyDown(k))
+export function areAllKeysDown(...keys: number[]): boolean {
+    return keys.every(k => isKeyDown(k))
 }
 
 export function newestKeyDown(...keys: number[]): number | undefined {
