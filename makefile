@@ -1,5 +1,4 @@
 modules_dir = ./node_modules/.bin
-built_dir = built
 
 
 .PHONY: all
@@ -13,9 +12,14 @@ install:
 
 .PHONY: clean
 clean:
-	rm -rf $(built_dir)
+	rm -rf built_for_tester_app built_for_publishing
 
 
 .PHONY: build 
 build: clean
 	$(modules_dir)/webpack
+	$(modules_dir)/tsc
+# Even when using the `exclude` option in `tsconfig.json`,
+# the compiler was generating a type declaration file for
+# `TesterApp.ts`.
+	find built_for_publishing -name "TesterApp.*" -exec rm {} \;

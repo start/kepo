@@ -5,7 +5,7 @@ module.exports = {
     entry: "./source/TesterApp.ts",
     output: {
         filename: "bundle.js",
-        path: __dirname + "/built"
+        path: __dirname + "/built_for_tester_app"
     },
 
     // Enable sourcemaps for debugging webpack's output.
