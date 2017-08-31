@@ -2,7 +2,7 @@
 // https://www.typescriptlang.org/docs/handbook/react-&-webpack.html
 
 module.exports = {
-    entry: "./source/App.ts",
+    entry: "./source/TesterApp.ts",
     output: {
         filename: "bundle.js",
         path: __dirname + "/built"
