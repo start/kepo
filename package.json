@@ -1,8 +1,9 @@
 {
   "name": "kepo",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Kepo lets you poll keyboard input",
   "main": "built_for_publishing/Kepo.js",
+  "typings": "built_for_publishing/Kepo.d.ts",
   "files": [
     "built_for_publishing"
   ],
