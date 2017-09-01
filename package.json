@@ -1,8 +1,11 @@
 {
   "name": "kepo",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Kepo lets you poll keyboard input",
   "main": "built_for_publishing/Kepo.js",
+  "files": [
+    "built_for_publishing"
+  ],
   "devDependencies": {
     "awesome-typescript-loader": "latest",
     "source-map-loader": "latest",
