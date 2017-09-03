@@ -3,6 +3,7 @@ import { keysDownFromOldestToNewest, isKeyDown, newestKeyDown, areAllKeysDown } 
 function getElementById(id: string): HTMLElement {
     return document.getElementById(id)!
 }
+
 document.addEventListener('DOMContentLoaded', () => {
     function frame() {
         getElementById('keysDownFromOldestToNewest').innerHTML =
