@@ -1,22 +1,22 @@
 import { keysDownFromOldestToNewest, isKeyDown, newestKeyDown, areAllKeysDown } from './Kepo'
 
-function getElementById(id: string): HTMLElement {
-    return document.getElementById(id)!
+function setHtml(id: string, html: string): void {
+    document.getElementById(id)!.innerHTML = html;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     function frame() {
-        getElementById('keysDownFromOldestToNewest').innerHTML =
-            keysDownFromOldestToNewest.join(', ')
+        setHtml('keysDownFromOldestToNewest',
+            keysDownFromOldestToNewest.join(', '))
 
-        getElementById('isKeyDown').innerHTML =
-            isKeyDown(32).toString()
+        setHtml('isKeyDown',
+            isKeyDown(32).toString())
 
-        getElementById('newestKeyDown').innerHTML =
-            (newestKeyDown(37, 38, 39, 40) || 'None').toString()
+        setHtml('newestKeyDown',
+            (newestKeyDown(37, 38, 39, 40) || 'None').toString())
 
-        getElementById('areAllKeysDown').innerHTML =
-            areAllKeysDown(17, 13).toString()
+        setHtml('areAllKeysDown',
+            areAllKeysDown(17, 13).toString())
 
         window.requestAnimationFrame(frame)
     }
