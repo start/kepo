@@ -21,5 +21,5 @@ build: clean
 	$(modules_dir)/tsc
 # Even when using the `exclude` option in `tsconfig.json`,
 # the compiler was generating a type declaration file for
-# `TesterApp.ts`.
-	find built_for_publishing -name "TesterApp.*" -exec rm {} \;
+# `_TesterApp.ts`.
+	find built_for_publishing -name "_TesterApp.*" -exec rm {} \;
